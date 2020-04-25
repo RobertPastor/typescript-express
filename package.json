@@ -16,8 +16,10 @@
   "author": "Robert PASTOR",
   "license": "ISC",
   "dependencies": {
+    "@types/pg": "^7.14.3",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
+    "pg": "^8.0.3",
     "typescript": "^3.8.3"
   },
   "devDependencies": {

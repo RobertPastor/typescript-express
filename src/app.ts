@@ -7,12 +7,13 @@ import { loggerMiddleware} from './middleware/loggerMiddleware';
 import { PORT } from './config/constants';
 import { userRouter } from './routes';
 import { mainRouter } from './routes';
-
+import { dbRouter } from "./routes";
 
 const app = express();
 app.use(loggerMiddleware);
 app.use(express.json());
 app.use('/users', userRouter);
+app.use('/db', dbRouter);
 app.use('/', mainRouter);
 
 app.listen(PORT, () => {
