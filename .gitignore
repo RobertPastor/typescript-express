@@ -1,0 +1,61 @@
+### Node ###
+
+
+# Logs
+
+logs
+
+npm-debug.log*
+
+
+# Optional npm cache directory
+
+.npm
+
+
+
+# Dependency directories
+
+/node_modules
+
+
+
+
+# dotenv environment variables file(s)
+
+.env
+
+.env.*
+
+
+
+#Build generated
+
+dist/
+
+build/
+
+
+
+
+
+
+### VisualStudioCode ###
+
+.vscode/*
+
+!.vscode/settings.json
+
+!.vscode/tasks.json
+
+!.vscode/launch.json
+
+!.vscode/extensions.json
+
+
+
+# Folder config file
+
+Desktop.ini
+
+
