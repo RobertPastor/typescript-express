@@ -1,0 +1,14 @@
+
+
+table {
+    border: 1px solid black;
+}
+
+th {
+    background-color: yellow;
+    border: 1px solid black;
+}
+
+td {
+    border: 1px solid black;
+}

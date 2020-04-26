@@ -10,10 +10,12 @@ import { mainRouter } from './routes';
 import { dbRouter } from "./routes";
 
 const app = express();
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
 
+app.use(express.static('public'));
 app.use(loggerMiddleware);
 app.use(express.json());
+
 app.use('/users', userRouter);
 app.use('/db', dbRouter);
 app.use('/', mainRouter);
