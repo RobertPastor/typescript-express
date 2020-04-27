@@ -1,13 +1,21 @@
+
+
 <!DOCTYPE html>
 <html>
-    
+
 <head>
     <meta charset="UTF-8">
-    <link href="/css/site.css" rel="stylesheet" type="text/css" media="screen">   
+    <%- include('../partials/header.ejs') %>
+    
     <title> <%= title %> </title>
 </head>
 
 <body>
+    <%- include('../partials/nav.ejs') %>
+    <br><br>
+
+    <div id="Tools" class="tabcontent">
+
     <h3>Database Tools page</h3>
     <div>
         <table >
@@ -33,4 +41,5 @@
         
     </div>
     
+</div>
 </body>

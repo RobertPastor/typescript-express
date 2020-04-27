@@ -1,23 +1,27 @@
 
-<div class="progressBarSection">
+<div class="navBarDiv">
 
-    <table class="tab">
-      <tr>
-  
-        <td width="60%">
-          <div>
-            <button name="Formation" class="tablinks" onclick="openTab(event, 'Formation')" id="defaultOpen">Formation</button>
-  
-            <button name="Portraits" class="tablinks" onclick="openTab(event, 'Portraits')">Portraits</button>
-            <button name="Paysages" class="tablinks" onclick="openTab(event, 'Paysages')">Paysages</button>
-            <button name="Corps" class="tablinks" onclick="openTab(event, 'Corps')">Corps</button>
-            <button name="Divers" class="tablinks" onclick="openTab(event, 'Divers')">Divers</button>
-          </div>
-        </td>
-  
-      </tr>
-  
-    </table>
-  
-  
-  </div>
+  <ul class="navUl">
+
+    <li class="navLi">
+      <!-- href="/" -->
+      <a name="navBarIndex" href="/" class="navA" onclick="navBarClicked(this)"> <span ></span>Home</a>
+    </li>
+
+    <li class="navLi">
+      <a name="navBarTools" href="/db/tools" class="navA" onclick="navBarClicked(this)"> <span ></span>Select a Tool</a>
+    </li>
+
+    <li class="navLi">
+      <a name="navBarProjects" href="/db/projects" class="navA" onclick="navBarClicked(this)"> <span ></span>Select a Project</a>
+    </li>
+
+
+  </ul>
+
+  <!-- <div id="progressBarId" class="progressBarDiv"> -->
+  <progress id="workerId" class="progressBar" max="100" value="0">
+    <span id="workerVal">0</span>%</progress>
+  <!-- </div> -->
+
+</div>

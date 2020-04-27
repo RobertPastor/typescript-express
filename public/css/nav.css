@@ -1,0 +1,69 @@
+
+/* Style the tab */
+.navBarDiv {
+    position: fixed;
+    z-index: 100;
+    top: 1px;
+}
+
+/* container below the navigation bar defined in nav.css */
+.container {
+    z-index: 1;
+    top: 60px;
+    margin-top:1px;
+    position: relative;
+}
+
+.navUl {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: gold;
+	border: 1px solid red;
+	overflow: auto;
+    width: 100%;
+}
+
+.navLi {
+    float: left;
+	border : 1px;
+}
+
+.navA {
+    display: block;
+    color: blue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navA:hover {
+    background-color: orange;
+	border : 2px;
+}
+
+.progressBar {
+    width : 100%;
+    height: 5px;
+    vertical-align: top;
+}
+
+.progressBarDiv {
+    z-index: 1;
+    top: 1px;
+    position: relative;
+}
+
+.highlight-underline{
+    font-weight: bold;
+    text-decoration: underline;
+    background-color: orange;
+
+}
+
+.tablinks {
+    font-family: Arial;
+    font-size: 14px;
+    z-index: 10;
+}
