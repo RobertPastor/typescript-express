@@ -5,6 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <%- include('../partials/header.ejs') %>
+
+    <script>
+        $(document).ready(function () {
+
+            console.log('projects ejs - document is loaded');
+            highLightNavBar('navBarProjects');
+            //$("a[name='navBarProjects']").addClass("highlight-underline");
+        
+        });
+    </script>
     
     <title> <%= title %> </title>
 </head>

@@ -11,3 +11,8 @@ function navBarCleanHighlights() {
         $("a[name='" + String(value) + "']").removeClass("highlight-underline");
     });
 }
+
+function highLightNavBar(name) {
+    console.log("High light nav bar element = " + String(name));
+    $("a[name='" + String(name) + "']").addClass("highlight-underline");
+}
