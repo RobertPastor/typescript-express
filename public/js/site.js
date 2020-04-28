@@ -7,7 +7,7 @@ function navBarClicked($this) {
 }
 
 function navBarCleanHighlights() {
-    $.each(["navBarIndex", "navBarTools", "navBarProjects"], function (index, value) {
+    $.each(["navBarIndex", "navBarAuthenticate", "navBarTools", "navBarProjects"], function (index, value) {
         $("a[name='" + String(value) + "']").removeClass("highlight-underline");
     });
 }

@@ -1,0 +1,11 @@
+
+{
+    "comment": "this is a token obtained using the Account menu , then Security",
+    "toolName": "toolName",
+    "link": "http://xxxxx:port/account/security/",
+    "server": "http://xxxxx:port",
+    "userName": "BibiBobo",
+    "tgi": "tgi",
+    "token": "666666666FFFFFFFFF8888888",
+    "password": "password"
+}

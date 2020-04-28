@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <%- include('../partials/header.ejs') %>
+
+    <link rel="stylesheet" type="text/css" href="/css/dropzone/dropzone.css" />
+    <script type="text/javascript" src="/js/dropzone/dropzone.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            console.log('projects ejs - document is loaded');
+            highLightNavBar('navBarAuthenticate');
+            //$("a[name='navBarAuthenticate']").addClass("highlight-underline");
+
+            Dropzone.options.dropzoneId = {
+                paramName: 'file',
+                maxFiles: 1
+            }
+        
+        });
+    </script>
+    
+    <title> Authenticate </title>
+</head>
+
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <br><br>
+    <h3>Please drop your authentication file</h3>
+
+    <form method="post" action="/authenticate/file"
+        class="dropzone"
+        id="dropzoneId">
+    </form>
+
+</body>
+
+</html>
