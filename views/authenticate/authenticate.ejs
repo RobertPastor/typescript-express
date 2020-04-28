@@ -12,14 +12,18 @@
     <script>
         $(document).ready(function () {
 
+
             console.log('projects ejs - document is loaded');
             highLightNavBar('navBarAuthenticate');
             //$("a[name='navBarAuthenticate']").addClass("highlight-underline");
 
-            Dropzone.options.dropzoneId = {
-                paramName: 'file',
-                maxFiles: 1
-            }
+            Dropzone.autoDiscover = false;
+            $("#dropZoneId").dropzone( {
+                paramName: "file",
+                maxFiles: 1,
+                url: "/authenticate/file",
+                uploadMultiple: false,
+            });
         
         });
     </script>
@@ -32,9 +36,9 @@
     <br><br>
     <h3>Please drop your authentication file</h3>
 
-    <form method="post" action="/authenticate/file"
+    <form method="post" 
         class="dropzone"
-        id="dropzoneId">
+        id="dropZoneId">
     </form>
 
 </body>
