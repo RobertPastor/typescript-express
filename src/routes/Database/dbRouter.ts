@@ -13,6 +13,10 @@ export const dbRouter = express.Router({
  */
 dbRouter.get('/projects', (req: Request, res: Response) => {
 
+    if (req.session && req.session.userName){
+        console.log("req session user name = " + req.session.userName);
+    }
+    
     let pool = new Pool ( poolConstants);
 
     console.log("main database router get /projects ");
@@ -39,6 +43,10 @@ dbRouter.get('/projects', (req: Request, res: Response) => {
 
 dbRouter.get('/tools', (req: Request, res: Response) => {
 
+    if (req.session && req.session.userName){
+        console.log("req session user name = " + req.session.userName);
+    }
+    
     let pool = new Pool ( poolConstants);
 
     console.log("main database router get /tools ");
