@@ -13,8 +13,10 @@ export const dbRouter = express.Router({
  */
 dbRouter.get('/projects', (req: Request, res: Response) => {
 
+    let userName : string ;
     if (req.session && req.session.userName){
         console.log("req session user name = " + req.session.userName);
+        userName = req.session.userName;
     }
     
     let pool = new Pool ( poolConstants);
@@ -31,8 +33,9 @@ dbRouter.get('/projects', (req: Request, res: Response) => {
         //res.json({ message: 'GET /db request received' })
 
         let data = {
+            "userName": userName,
             "title": "Database projects",
-            "nuProjects": resp.rowCount,
+            "nbProjects": resp.rowCount,
             "rows": resp.rows
         }
         res.render("./db/projects.ejs", data);

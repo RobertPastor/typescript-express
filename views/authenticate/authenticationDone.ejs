@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <%- include('../partials/header.ejs') %>
+
+    <script>
+        $(document).ready(function () {
+
+            console.log('authentication done ejs - document is loaded');
+            highLightNavBar('navBarAuthenticate');
+            //$("a[name='navBarAuthenticate']").addClass("highlight-underline");
+
+        });
+    </script>
+    <title> Authentication Done </title>
+</head>
+
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <br><br>
+    <h3>authentication done</h3>
+
+</body>

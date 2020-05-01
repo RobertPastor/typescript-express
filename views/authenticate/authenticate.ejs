@@ -12,6 +12,8 @@
     <script>
         $(document).ready(function () {
 
+            $("#authenticationDone").hide();
+            $("#userName").hide();
 
             console.log('projects ejs - document is loaded');
             highLightNavBar('navBarAuthenticate');
@@ -23,6 +25,14 @@
                 maxFiles: 1,
                 url: "/authenticate/file",
                 uploadMultiple: false,
+                success: function (file, response) {
+                    console.log(JSON.stringify(response));
+                    $("#dropZoneId").hide();
+                    $("#pleaseDrop").hide();
+                    $("#authenticationDone").show();
+                    $("#userName").show();
+                    $("#userName").html("user name: " + response.userName);
+                }
             });
         
         });
@@ -34,8 +44,9 @@
 <body>
     <%- include('../partials/nav.ejs') %>
     <br><br>
-    <h3>Please drop your authentication file</h3>
-
+    <h3 id="pleaseDrop">Please drop your authentication file</h3>
+    <h3 id="authenticationDone">Authentication Done</h3>
+    <span id="userName"> user name = </span>
     <form method="post" 
         class="dropzone"
         id="dropZoneId">

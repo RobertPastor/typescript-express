@@ -1,4 +1,4 @@
-import express , {Request, Response} from "express";
+import express , {Request, Response, json} from "express";
 import fileUpload from "express-fileupload";
 
 export const authenticateRouter = express.Router({
@@ -10,10 +10,15 @@ export const authenticateRouter = express.Router({
 /**
  * authenticate a user
  */
-authenticateRouter.get('/', (req: Request, res: Response) => {
+authenticateRouter.get('/main', (req: Request, res: Response) => {
 
     console.log("authenticate router");
-    res.render("./authenticate/authenticate.ejs");
+    let data = { "userName" : undefined};
+    if ( req.session && req.session.userName ) {
+        console.log("req session is existing = "  + JSON.stringify(req.session));
+        data.userName = req.session.userName;
+    }
+    res.render("authenticate/authenticate.ejs" , data);
 
 });
 
@@ -21,9 +26,8 @@ authenticateRouter.post('/file', (req: Request, res: Response) => {
 
     console.log("authenticate router");
     //console.log(req.files);
-    console.log("req has own property named files = " + req.hasOwnProperty("files"));
-      
-    if (req.files ){
+    let data = { "userName" : undefined};
+    if ( req.files ){
     
             let uploadedFiles : fileUpload.FileArray  = req.files ;
             let uploadedFile : fileUpload.UploadedFile = req.files.file as fileUpload.UploadedFile;
@@ -31,19 +35,21 @@ authenticateRouter.post('/file', (req: Request, res: Response) => {
                 uploadedFile.hasOwnProperty("mimetype") &&
                 (uploadedFile.mimetype === "application/json")) {
     
-                console.log("req.files.file own property named mimetype = " + uploadedFile.hasOwnProperty("mimetype"))
+                console.log("uploadedFile own property named mimetype = " + uploadedFile.hasOwnProperty("mimetype"))
                 console.log("typeof mimetype = " + typeof uploadedFile.mimetype)
                 //console.log(typeof uploadedFile.data)
                 let jsonString : string = uploadedFile.data.toString();
                 console.log (jsonString);
                 let jsonObject = JSON.parse(jsonString);
                 if ( req.session ) {
-                    console.log("req session is existing = "  + req.session);
+                    console.log("req session is existing = "  + JSON.stringify(req.session));
                     if (req.session.userName) {
-                        console.log("req session username = "  + req.session.userName)
+                        console.log("req session username = "  + req.session.userName);
+                        data.userName = jsonObject.userName;
                     } else {
                         console.log("req session userName is defined")
                         req.session!["userName"] = jsonObject.userName;
+                        data.userName = jsonObject.userName;
                     }
                 } else {
                     console.log("req session userName is defined")
@@ -51,6 +57,8 @@ authenticateRouter.post('/file', (req: Request, res: Response) => {
                 }
             }
         }
-    res.render("./authenticate/authenticate.ejs");
+    console.log("response is rendering")
+    res.json( data );
 
 });
+
