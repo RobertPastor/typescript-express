@@ -1,5 +1,5 @@
-import express , {Request, Response} from "express";
-
+import express, { Request, Response } from "express";
+import { log } from "../../helpers/log";
 
 export const mainRouter = express.Router({
 
@@ -10,7 +10,7 @@ export const mainRouter = express.Router({
 
 mainRouter.get('/', (req: Request, res: Response) => {
 
-    console.log("main router get / ");
+    log("main router get / ");
     let data = {
         "title": "Main Site Page",
         "contents": "text."

@@ -25,6 +25,9 @@
                 maxFiles: 1,
                 url: "/authenticate/file",
                 uploadMultiple: false,
+                error: function(file, errorMessage) {
+                    alert(errorMessage);
+                },
                 success: function (file, response) {
                     console.log(JSON.stringify(response));
                     $("#dropZoneId").hide();
