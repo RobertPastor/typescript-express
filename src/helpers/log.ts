@@ -9,6 +9,9 @@ function getFileName(): string {
     let err = new Error();
     let trace = stackTrace.parse(err);
     let fileName = trace[2].getFileName();
+    if (String(fileName).includes('dist')) {
+        fileName = String(fileName).split('dist')[1]
+    }
     return fileName;
 }
 

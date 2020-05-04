@@ -27,7 +27,7 @@ authenticateRouter.post('/file', (req: Request, res: Response) => {
 
     log("authenticate router");
     //log(req.files);
-    let data = { "userName": undefined };
+    let data = { "userName": undefined, "toolName": undefined };
     if (req.files) {
 
         let uploadedFiles: fileUpload.FileArray = req.files;
@@ -41,21 +41,25 @@ authenticateRouter.post('/file', (req: Request, res: Response) => {
             //log(typeof uploadedFile.data)
 
             let jsonString: string = uploadedFile.data.toString();
-            log(jsonString);
+            //log(jsonString);
             let jsonObject = JSON.parse(jsonString);
             if (req.session) {
                 log("req session is existing = " + JSON.stringify(req.session));
-                if (req.session.userName) {
+                if (req.session.userName & req.session.toolName) {
                     log("req session username = " + req.session.userName);
                     data.userName = jsonObject.userName;
+                    data.toolName = jsonObject.toolName;
                 } else {
                     log("req session userName is defined")
                     req.session!["userName"] = jsonObject.userName;
+                    req.session!["toolName"] = jsonObject.toolName;
                     data.userName = jsonObject.userName;
+                    data.toolName = jsonObject.toolName;
                 }
             } else {
                 log("req session userName is defined")
                 req.session!["userName"] = jsonObject.userName;
+                req.session!["toolName"] = jsonObject.toolName;
             }
         }
     }

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -20,12 +19,12 @@
             //$("a[name='navBarAuthenticate']").addClass("highlight-underline");
 
             Dropzone.autoDiscover = false;
-            $("#dropZoneId").dropzone( {
+            $("#dropZoneId").dropzone({
                 paramName: "file",
                 maxFiles: 1,
                 url: "/authenticate/file",
                 uploadMultiple: false,
-                error: function(file, errorMessage) {
+                error: function (file, errorMessage) {
                     alert(errorMessage);
                 },
                 success: function (file, response) {
@@ -37,22 +36,20 @@
                     $("#userName").html("user name: " + response.userName);
                 }
             });
-        
+
         });
     </script>
-    
+
     <title> Authenticate </title>
 </head>
 
 <body>
     <%- include('../partials/nav.ejs') %>
-    <br><br>
+    <br><br><br><br>
     <h3 id="pleaseDrop">Please drop your authentication file</h3>
     <h3 id="authenticationDone">Authentication Done</h3>
     <span id="userName"> user name = </span>
-    <form method="post" 
-        class="dropzone"
-        id="dropZoneId">
+    <form method="post" class="dropzone" id="dropZoneId">
     </form>
 
 </body>

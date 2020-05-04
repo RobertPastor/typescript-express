@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -12,16 +11,16 @@
             console.log('projects ejs - document is loaded');
             highLightNavBar('navBarProjects');
             //$("a[name='navBarProjects']").addClass("highlight-underline");
-        
+
         });
     </script>
-    
+
     <title> <%= title %> </title>
 </head>
 
 <body>
     <%- include('../partials/nav.ejs') %>
-    <br><br>
+    <br><br><br><br>
 
     <div id="Projects" class="tabcontent">
 
@@ -38,18 +37,18 @@
                 </tr>
 
                 <% rows.forEach( row => { %>
-                    
-                    <tr>
-                        <td><%= row.Id %></td>
-                        <td><%= row.Name %></td>
-                    </tr>
-                    
+
+                <tr>
+                    <td><%= row.Id %></td>
+                    <td><%= row.Name %></td>
+                </tr>
+
                 <% }) %>
 
             </table>
-            
+
         </div>
-        
+
     </div>
 </body>
 

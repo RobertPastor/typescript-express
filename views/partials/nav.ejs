@@ -1,15 +1,15 @@
-
 <div class="navBarDiv">
 
   <ul class="navUl">
 
     <li class="navLi">
       <!-- href="/" -->
-      <a name="navBarIndex" href="/" class="navA" onclick="navBarClicked(this)"> <span ></span>Home</a>
+      <a name="navBarIndex" href="/" class="navA" onclick="navBarClicked(this)"> <span></span>Home</a>
     </li>
 
     <li class="navLi">
-      <a name="navBarAuthenticate" href="/authenticate/main" class="navA" onclick="navBarClicked(this)"> <span></span>Authenticate</a>
+      <a name="navBarAuthenticate" href="/authenticate/main" class="navA" onclick="navBarClicked(this)">
+        <span></span>Authenticate</a>
     </li>
 
     <li class="navLi">
@@ -17,7 +17,8 @@
     </li>
 
     <li class="navLi">
-      <a name="navBarProjects" href="/db/projects" class="navA" onclick="navBarClicked(this)"> <span ></span>Select a Project</a>
+      <a name="navBarProjects" href="/db/projects" class="navA" onclick="navBarClicked(this)"> <span></span>Select a
+        Project</a>
     </li>
 
   </ul>
@@ -26,5 +27,24 @@
   <progress id="workerId" class="progressBar" max="100" value="0">
     <span id="workerVal">0</span>%</progress>
   <!-- </div> -->
+
+  <div>
+    <table>
+      <tr>
+        <td>User Name</td>
+        <td id="userNameId">
+          <% if(locals.userName) { %>
+          <%- locals.userName %>
+          <% } %>
+        </td>
+        <td>Tool Name</td>
+        <td id="toolNameId">
+          <% if(locals.toolName) { %>
+          <%- locals.toolName %>
+          <% } %>
+        </td>
+      </tr>
+    </table>
+  </div>
 
 </div>

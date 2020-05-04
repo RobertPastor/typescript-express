@@ -1,10 +1,10 @@
-import { router as userRouter } from './User/User';
-import { mainRouter  } from './Main/mainRouter';
-import { dbRouter } from './Database/dbRouter';
-import { authenticateRouter } from './Authenticate/authenticateRouter';
+import { router as userRouter } from './user/User';
+import { mainRouter } from './main/mainRouter';
+import { dbRouter } from './database/dbRouter';
+import { authenticateRouter } from './authenticate/authenticateRouter';
 export {
 
-    userRouter, 
+    userRouter,
     mainRouter,
     dbRouter,
     authenticateRouter
