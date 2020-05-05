@@ -1,4 +1,4 @@
-import express, { Request, Response, json } from "express";
+import express, { Request, Response } from "express";
 import fileUpload from "express-fileupload";
 import { log } from "../../helpers/log"
 
@@ -8,16 +8,21 @@ export const authenticateRouter = express.Router({
 
 });
 
+interface intData {
+    userName: string,
+    toolName: string
+}
 /**
  * authenticate a user
  */
 authenticateRouter.get('/main', (req: Request, res: Response) => {
 
     log("authenticate router");
-    let data = { "userName": undefined };
+    let data: intData = { userName: "", toolName: "" };
     if (req.session && req.session.userName) {
         log("req session is existing = " + JSON.stringify(req.session));
         data.userName = req.session.userName;
+        data.toolName = req.session.toolName;
     }
     res.render("authenticate/authenticate.ejs", data);
 
@@ -27,10 +32,10 @@ authenticateRouter.post('/file', (req: Request, res: Response) => {
 
     log("authenticate router");
     //log(req.files);
-    let data = { "userName": undefined, "toolName": undefined };
+    let data: intData = { userName: "", toolName: "" };
     if (req.files) {
 
-        let uploadedFiles: fileUpload.FileArray = req.files;
+        //let uploadedFiles: fileUpload.FileArray = req.files;
         let uploadedFile: fileUpload.UploadedFile = req.files.file as fileUpload.UploadedFile;
         if (uploadedFile.hasOwnProperty("data") &&
             uploadedFile.hasOwnProperty("mimetype") &&

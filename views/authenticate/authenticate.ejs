@@ -33,7 +33,12 @@
                     $("#pleaseDrop").hide();
                     $("#authenticationDone").show();
                     $("#userName").show();
-                    $("#userName").html("user name: " + response.userName);
+                    if (response.hasOwnProperty("userName") && response.hasOwnProperty("toolName")) {
+                        $("#userName").html("user name: " + response.userName);
+                        // load info in navigation bar
+                        $("#userNameId").html(response.userName);
+                        $("#toolNameId").html(response.toolName);
+                    }
                 }
             });
 
