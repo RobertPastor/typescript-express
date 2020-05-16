@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <%- include('../partials/header.ejs') %>
+
+    <script>
+        $(document).ready(function () {
+
+            console.log('violations ejs - document is loaded');
+            highLightNavBar('navBarViolations');
+            //$("a[name='navBarProjects']").addClass("highlight-underline");
+
+        });
+    </script>
+
+    <title> <%= title %> </title>
+</head>
+
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <br><br><br><br>
+
+    <div id="Violations" class="tabcontent">
+
+        <h3>Violations Checklist page</h3>
+        <div>
+            <table border="1px">
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Violation Id
+                    </th>
+                    <th>
+                        Rule Id
+                    </th>
+                    <th>
+                        Violation Title
+                    </th>
+                    <th>
+                        ATM Severity
+                    </th>
+                    <th>
+                        Issue Type
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Computer Software Unit
+                    </th>
+                </tr>
+
+                <% rows.forEach( row => { %>
+
+                <tr>
+
+                    <td><%= row.Id %></td>
+                    <td><%= row.ViolationId %></td>
+                    <td><%= row.RuleId %></td>
+                    <td><%= row.ViolationTitle %></td>
+                    <td><%= row.Severity %></td>
+                    <td><%= row.IssueType %></td>
+                    <td><%= row.Status %></td>
+                    <td><%= row.ComputerSwUnit %></td>
+                </tr>
+
+                <% }) %>
+
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

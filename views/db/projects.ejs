@@ -25,9 +25,13 @@
     <div id="Projects" class="tabcontent">
 
         <h3>Database Projects page</h3>
+        <span>Click on a project to see its branches</span>
         <div>
             <table border="1px">
                 <tr>
+                    <th>
+                        #
+                    </th>
                     <th>
                         Identifier
                     </th>
@@ -39,6 +43,9 @@
                 <% rows.forEach( row => { %>
 
                 <tr>
+                    <td>
+                        <a href='/db/projects/<%= row.Id %>' </a>Click to select</a>
+                    </td>
                     <td><%= row.Id %></td>
                     <td><%= row.Name %></td>
                 </tr>

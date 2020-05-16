@@ -37,6 +37,7 @@ app.use('/users', userRouter);
 app.use('/db', dbRouter);
 app.use('/authenticate', authenticateRouter);
 app.use('/', mainRouter);
+app.use('/favicon.ico', express.static('/images/favicon.ico'));
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);

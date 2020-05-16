@@ -4,9 +4,9 @@
   "description": "express server written in typescript - launch with npm run dev",
   "main": "app.js",
   "scripts": {
-    "start:dev": "nodemon dist/app.js",
-    "build:dev": "tsc --watch --preserveWatchOutput",
     "dev": "concurrently \"npm:build:dev\" \"npm:start:dev\"",
+    "build:dev": "tsc --watch --preserveWatchOutput",
+    "start:dev": "nodemon dist/app.js",
     "test": "npm jest"
   },
   "keywords": [

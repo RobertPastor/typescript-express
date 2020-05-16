@@ -17,7 +17,7 @@ interface intData {
  */
 authenticateRouter.get('/main', (req: Request, res: Response) => {
 
-    log("authenticate router");
+    log("authenticate router main");
     let data: intData = { userName: "", toolName: "" };
     if (req.session && req.session.userName) {
         log("req session is existing = " + JSON.stringify(req.session));
@@ -27,10 +27,12 @@ authenticateRouter.get('/main', (req: Request, res: Response) => {
     res.render("authenticate/authenticate.ejs", data);
 
 });
-
+/**
+ * drop a JSON file with login , password and tool name
+ */
 authenticateRouter.post('/file', (req: Request, res: Response) => {
 
-    log("authenticate router");
+    log("authenticate router file received");
     //log(req.files);
     let data: intData = { userName: "", toolName: "" };
     if (req.files) {
@@ -68,7 +70,7 @@ authenticateRouter.post('/file', (req: Request, res: Response) => {
             }
         }
     }
-    log("response is rendering")
+    log("authenticate file : json response is returned")
     res.json(data);
 
 });
