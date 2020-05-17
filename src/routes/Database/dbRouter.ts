@@ -125,19 +125,19 @@ dbRouter.get('/violations', (req: Request, res: Response) => {
     query += ' INNER JOIN public."ATMSeverity" h2 on h1."Severity" = h2."Id" ';
     query += ' INNER JOIN public."IssueType" h3 on h1."IssueType" = h3."Id" ';
     query += ' INNER JOIN public."Status" h4 on h1."Status" = h4."Id" ';
-    pool.query(query, (err, resp) => {
+    pool.query(query, (err, results) => {
         if (err) {
             log(err.message);
             pool.end();
         } else {
             //log( resp)
-            log("row count = " + resp.rowCount);
+            log("row count = " + results.rowCount);
 
             let data = {
                 "userName": userName,
                 "title": "Violations",
-                "nbItems": resp.rowCount,
-                "rows": resp.rows
+                "nbItems": results.rowCount,
+                "rows": results.rows
             }
             res.render("./db/violations.ejs", data);
             pool.end();

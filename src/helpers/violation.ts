@@ -21,37 +21,54 @@ enum ATMSeverity {
 
 class Violation {
 
-    id: string;
-    ruleId: string;
-    title: string;
-    severity: ATMSeverity;
-    issueType: IssueType;
-    status: Status;
+    _id: string;
+    _ruleId: string;
+    _title: string;
+    _severity: ATMSeverity;
+    _issueType: IssueType;
+    _status: Status;
 
     // Computer Software Unit
     // src/main/java/com.thales....
     // src/main/java/com/thales/airsystems/sonar/plugin/issueresolver/ws/UpdateAction.java
-    CSU: string;
+    _CSU: string;
 
     constructor(violationId: string, violatedRuleId: string, violationTitle: string,
         severity: ATMSeverity, issueType: IssueType, status: Status, CSU: string) {
 
-        this.id = violationId;
-        this.ruleId = violatedRuleId;
-        this.title = violationTitle;
-        this.severity = severity;
-        this.issueType = issueType;
-        this.status = status;
-        this.CSU = CSU;
+        this._id = violationId;
+        this._ruleId = violatedRuleId;
+        this._title = violationTitle;
+        this._severity = severity;
+        this._issueType = issueType;
+        this._status = status;
+        this._CSU = CSU;
 
     }
 
     get getId(): string {
-        return this.id;
+        return this._id;
     }
-    set setId(_id: string) {
-        this.id = _id;
+    set setId(id: string) {
+        this._id = id;
     }
 }
 
-export { Violation, ATMSeverity, IssueType, Status };
+class ViolationArray {
+    _violationArray: Array<Violation>;
+    constructor() {
+        this._violationArray = [];
+    }
+    size(): number {
+        return this._violationArray.length;
+    }
+    push(violation: Violation): number {
+        return this._violationArray.push(violation);
+    }
+    pop(): Violation {
+        return this._violationArray.pop();
+    }
+
+}
+
+export { Violation, ViolationArray, ATMSeverity, IssueType, Status };
