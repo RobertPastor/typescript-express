@@ -9,7 +9,8 @@ test('test Sonar Cloud get Projects', done => {
     let organization = "robertpastor";
     sonarCloud.getProjects(token, organization)
         .then(response => {
-            log(JSON.stringify(response))
+            log(JSON.stringify(response));
+            expect(response.responseArray.length === 2).toBe(true);
             done()
         })
         .catch(err => {
@@ -29,6 +30,7 @@ test('test Sonar Cloud get Projects', done => {
     sonarCloud.getIssues(token, organization, projectKey)
         .then(response => {
             log(JSON.stringify(response))
+            expect(response.responseArray.length === 16).toBe(true);
             done()
         })
         .catch(err => {

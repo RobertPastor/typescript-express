@@ -5,8 +5,7 @@ import request, { Response } from "request";
 interface SonarCloudResponse {
     err?: string,
     statusCode?: number,
-    responseBody?: any,
-    responseArray?: any
+    responseArray: Array<any>
 }
 
 export interface SonarOptions {
@@ -25,6 +24,7 @@ export class SonarCloudController {
         return new Promise((resolve, reject) => {
 
             let sonarResponse = <SonarCloudResponse>{};
+            sonarResponse.responseArray = [];
             function nextPage(pageIndex: number) {
 
                 let auth: string = "Basic " + Buffer.from(options.token + ":").toString("base64");
@@ -55,23 +55,23 @@ export class SonarCloudController {
                     } else {
                         log("Response status code= " + JSON.stringify(res.statusCode))
                         if (res.statusCode === 200) {
-                            log(JSON.stringify(body));
+                            //log(JSON.stringify(body));
+                            // body is a string => convert to an object
                             body = JSON.parse(body)
-                            if (options.return && body.hasOwnProperty[options.return]) {
+                            if (options.return && body.hasOwnProperty(options.return)) {
                                 sonarResponse.responseArray = sonarResponse.responseArray.concat(body[options.return])
                             }
-                            sonarResponse.responseBody = body;
                             sonarResponse.statusCode = res.statusCode;
                             let currentTotal = pageIndex * pageSize;
                             if (body.hasOwnProperty("paging")) {
-                                log("response body has property paging");
+                                log("response body has property paging = " + JSON.stringify(body.paging));
                                 let total = body.paging.total;
                                 if (currentTotal < total) {
-                                    pageIndex = pageIndex + 1
-                                    nextPage(pageIndex)
+                                    pageIndex = pageIndex + 1;
+                                    nextPage(pageIndex);
                                 } else {
-                                    log("it is finished")
-                                    resolve(sonarResponse)
+                                    log("it is finished");
+                                    resolve(sonarResponse);
                                 }
                             } else {
                                 reject("Response Body has no property paging as expected")
@@ -108,7 +108,7 @@ export class SonarCloudController {
     public getProjects(token: string, organization: string): Promise<SonarCloudResponse> {
 
         return new Promise((resolve, reject) => {
-
+            // components is the name of the array returned by SonarCloud
             let options: SonarOptions = { token: token, api: "projects/search", organization: organization, return: "components" }
             this.getPaginated(options)
                 .then(response => {
