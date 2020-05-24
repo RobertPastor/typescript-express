@@ -26,7 +26,7 @@ function getLineNumber(): number {
 export function log(message: string): void {
     let dateTime = new Date();
 
-    var date_options = { weekday: "long", year: "numeric", month: "long", day: "numeric", timeZone: "Europe/Paris", hour12: false };
+    //var date_options = { weekday: "long", year: "numeric", month: "long", day: "numeric", timeZone: "Europe/Paris", hour12: false };
     //console.log ( dateTime.toLocaleTimeString("fr-FR", date_options)  + ' - ' + data);
     let strMessage = '';
     strMessage = days[dateTime.getDay()] + ', ' + months[dateTime.getMonth()] + ' ' + dateTime.getDate() + ', ' + dateTime.getFullYear();
