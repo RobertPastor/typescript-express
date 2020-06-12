@@ -18,4 +18,4 @@ function startScript() {
 
         })
 }
-startScript()
+startScript();

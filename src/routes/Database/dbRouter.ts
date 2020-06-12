@@ -27,7 +27,7 @@ dbRouter.get('/projects', (req: Request, res: Response) => {
         userName = req.session.userName;
     }
 
-    let pool = new Pool(poolConstants);
+    let pool: Pool = new Pool(poolConstants);
 
     log("main database router get /projects ");
 
@@ -76,7 +76,7 @@ dbRouter.get('/tools', (req: Request, res: Response) => {
         userName = req.session.userName;
     }
 
-    let pool = new Pool(poolConstants);
+    let pool: Pool = new Pool(poolConstants);
 
     log("main database router get /tools ");
 
