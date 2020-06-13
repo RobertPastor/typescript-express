@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <%- include('../partials/header.ejs') %>
+
+    <script>
+        $(document).ready(function () {
+
+            console.log('violations ejs - document is loaded');
+            highLightNavBar('navBarViolations');
+            //$("a[name='navBarProjects']").addClass("highlight-underline");
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <br><br><br><br>
+
+    <div id="Violations" class="tabcontent">
+
+        <h3>Violations Checklist page</h3>
+        <div>
+            <table border="1px">
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        Key
+                    </th>
+
+                    <th>
+                        Rule
+                    </th>
+                    <th>
+                        Violation Title
+                    </th>
+                    <th>
+                        Severity
+                    </th>
+                    <th>
+                        Issue Type
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Computer Software Unit
+                    </th>
+                </tr>
+
+                <% responseArray.forEach( function(row,index) { %>
+
+                <tr>
+                    <td><%= index+1 %></td>
+                    <td><%= row.key %></td>
+                    <td><%= row.rule %></td>
+                    <td><%= row.message %></td>
+                    <td><%= row.severity %></td>
+                    <td><%= row.type %></td>
+                    <td><%= row.status %></td>
+                    <td><%= row.component %></td>
+                </tr>
+
+                <% }) %>
+
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

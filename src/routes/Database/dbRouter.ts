@@ -31,7 +31,7 @@ dbRouter.get('/projects', (req: Request, res: Response) => {
 
     log("main database router get /projects ");
 
-    let query = 'SELECT Id, Name FROM public."Projects" '
+    let query: string = 'SELECT Id, Name FROM public."Projects" '
     query = " SELECT NOW() "
     query = "select rolcreatedb from pg_roles where rolname = current_user "
     query = ' SELECT "Id", "Name" FROM public."Projects" '
