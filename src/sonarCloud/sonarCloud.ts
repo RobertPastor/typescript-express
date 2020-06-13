@@ -112,7 +112,7 @@ export class SonarCloudController {
             let options: SonarOptions = { token: token, api: "projects/search", organization: organization, return: "components" }
             this.getPaginated(options)
                 .then(response => {
-                    log(JSON.stringify(response))
+                    log(JSON.stringify(response));
                     resolve(response);
                 })
                 .catch(err => {
@@ -129,7 +129,7 @@ export class SonarCloudController {
             let options: SonarOptions = { token: token, api: "issues/search", organization: organization, projectKey: projectKey, return: "issues" }
             this.getPaginated(options)
                 .then(response => {
-                    //log(JSON.stringify(response))
+                    //log(JSON.stringify(response));
                     resolve(response);
                 })
                 .catch(err => {

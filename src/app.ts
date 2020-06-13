@@ -13,6 +13,7 @@ import { userRouter } from './routes';
 import { mainRouter } from './routes';
 import { dbRouter } from "./routes";
 import { authenticateRouter } from "./routes";
+import { sonarCloudRouter } from "./routes";
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -35,6 +36,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use('/users', userRouter);
 app.use('/db', dbRouter);
+app.use('/sonar', sonarCloudRouter);
 app.use('/authenticate', authenticateRouter);
 app.use('/favicon.ico', express.static('/images/favicon.ico'));
 app.use('/', mainRouter);

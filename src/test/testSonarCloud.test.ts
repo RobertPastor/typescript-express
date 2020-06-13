@@ -31,11 +31,11 @@ test('test Sonar Cloud get Issues', done => {
         .then(response => {
             log(JSON.stringify(response));
             expect(response.responseArray.length === 16).toBe(true);
-            done()
+            done();
         })
         .catch(err => {
-            log(err)
-            done()
+            log(err);
+            done();
         })
 
 }, 10000);

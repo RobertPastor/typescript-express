@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <%- include('../partials/header.ejs') %>
+
+    <script>
+        $(document).ready(function () {
+
+            console.log('sonar projects ejs - document is loaded');
+            highLightNavBar('navBarSonarProjects');
+            //$("a[name='navBarProjects']").addClass("highlight-underline");
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <br><br><br><br>
+
+    <div id="Projects" class="tabcontent">
+
+        <h3>SonarCloud Projects page</h3>
+        <span>Click on a project to see its violations</span>
+        <div>
+            <table border="1px">
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        Project Key
+                    </th>
+                    <th>
+                        Project Name
+                    </th>
+                    <th>
+                        Project Organization
+                    </th>
+                </tr>
+
+                <% responseArray.forEach( row => { %>
+
+                <tr>
+                    <td>
+                        <a href='/db/projects/<%= row.Id %>' </a>Click to select</a>
+                    </td>
+                    <td><%= row.key %></td>
+                    <td><%= row.name %></td>
+                    <td><%= row.organization %></td>
+                </tr>
+
+                <% }) %>
+
+            </table>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
