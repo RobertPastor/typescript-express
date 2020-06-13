@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import fileUpload from "express-fileupload";
-import { log } from "../../helpers/log"
+import { log } from "../../helpers/log";
 
 export const authenticateRouter = express.Router({
 
@@ -28,7 +28,7 @@ authenticateRouter.get('/main', (req: Request, res: Response) => {
 
 });
 /**
- * drop a JSON file with login , password and tool name
+ * drop a JSON file with login , password and tool name, and more
  */
 authenticateRouter.post('/file', (req: Request, res: Response) => {
 

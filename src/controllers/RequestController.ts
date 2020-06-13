@@ -1,7 +1,7 @@
 
 import { Response } from "request";
 
-import { SonarOptions } from "../sonarCloud/sonarCloud"
+import { SonarOptions } from "../models/sonarCloud/sonarCloud";
 
 export abstract class RequestController {
 

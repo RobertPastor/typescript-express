@@ -1,5 +1,5 @@
 
-import { log } from "../helpers/log";
+import { log } from "../../helpers/log";
 import request, { Response } from "request";
 
 interface SonarCloudResponse {

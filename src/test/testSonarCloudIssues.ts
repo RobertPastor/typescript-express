@@ -1,6 +1,6 @@
 
 import { log } from "../helpers/log";
-import { SonarCloudController } from "../sonarCloud/sonarCloud"
+import { SonarCloudController } from "../models/sonarCloud/sonarCloud";
 
 function startScript() {
 

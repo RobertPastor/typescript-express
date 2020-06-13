@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { log } from "../../helpers/log";
-import { SonarCloudController } from "../../sonarCloud/sonarCloud";
+import { SonarCloudController } from "../../models/sonarCloud/sonarCloud";
 
 export const sonarCloudRouter = express.Router({
 
@@ -15,7 +15,7 @@ sonarCloudRouter.get('/projects', (req: Request, res: Response) => {
 
     log("sonar Cloud router get projects received");
 
-    let sonarCloud = new SonarCloudController()
+    let sonarCloud: SonarCloudController = new SonarCloudController()
     let token: string = "c410aa98569fd6a31f67473c4c6a941246ec8fa8";
     let organization = "robertpastor";
     sonarCloud.getProjects(token, organization)

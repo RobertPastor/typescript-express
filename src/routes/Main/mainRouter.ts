@@ -15,6 +15,7 @@ mainRouter.get('/', (req: Request, res: Response) => {
         "title": "Main Site Page",
         "contents": "text."
     }
+    //
     res.render("./main.ejs", data);
 
 });

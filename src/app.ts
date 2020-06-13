@@ -3,7 +3,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import { loggerMiddleware } from './middleware/loggerMiddleware';
 import fileUpload from "express-fileupload";
 import session from "express-session";
-import sessionOptions from "./database/dbSessions";
+import sessionOptions from "./models/database/dbSessions";
 
 /**
  * https://medium.com/better-programming/create-an-express-server-using-typescript-dec8a51e7f8d
@@ -25,7 +25,7 @@ app.use(fileUpload());
 app.use(session(sessionOptions));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-
+  // purpose is to set locals for highlighting the selected tab
   if (req && req.hasOwnProperty("session") && req.session.hasOwnProperty("userName") &&
     req.session.hasOwnProperty("toolName")) {
     res.locals.userName = req.session.userName;

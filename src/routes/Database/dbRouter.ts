@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import poolConstants from "../../database/dbConfig";
+import poolConstants from "../../models/database/dbConfig";
 import { Pool } from 'pg';
 import { log } from "../../helpers/log";
 
