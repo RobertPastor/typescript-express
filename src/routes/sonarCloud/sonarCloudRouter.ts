@@ -22,8 +22,7 @@ sonarCloudRouter.get('/projects', (req: Request, res: Response) => {
         .then(response => {
             log(JSON.stringify(response));
             //res.json({ response: response });
-            res.render("./sonarCloud/projects.ejs", response)
-
+            res.render("./sonarCloud/projects.ejs", response);
         })
         .catch(err => {
             log(err);
@@ -34,10 +33,11 @@ sonarCloudRouter.get('/projects', (req: Request, res: Response) => {
 
 sonarCloudRouter.get('/issues', (req: Request, res: Response) => {
 
-    let sonarCloud: SonarCloudController = new SonarCloudController()
+    let sonarCloud: SonarCloudController = new SonarCloudController();
     let token: string = "c410aa98569fd6a31f67473c4c6a941246ec8fa8";
     let organization: string = "robertpastor";
-    let projectKey = "RobertPastor_sonar-issue-resolver-plugin";
+    let projectKey: string = "RobertPastor_sonar-issue-resolver-plugin";
+    //projectKey = "RobertPastor_MestraJavaXML";
     sonarCloud.getIssues(token, organization, projectKey)
         .then(response => {
             log(JSON.stringify(response));
@@ -46,6 +46,7 @@ sonarCloudRouter.get('/issues', (req: Request, res: Response) => {
         })
         .catch(err => {
             log(err);
+            log(JSON.stringify(err));
             res.render("./error.ejs", err);
         })
 });

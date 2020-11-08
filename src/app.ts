@@ -4,6 +4,7 @@ import { loggerMiddleware } from './middleware/loggerMiddleware';
 import fileUpload from "express-fileupload";
 import session from "express-session";
 import sessionOptions from "./models/database/dbSessions";
+import bodyParser from 'body-parser';
 
 /**
  * https://medium.com/better-programming/create-an-express-server-using-typescript-dec8a51e7f8d
@@ -20,12 +21,16 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 app.use(loggerMiddleware);
-app.use(express.json());
+//app.use(express.json());
 app.use(fileUpload());
 app.use(session(sessionOptions));
 
+app.use(bodyParser.json());
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
 app.use((req: Request, res: Response, next: NextFunction) => {
-  // purpose is to set locals for highlighting the selected tab
+  // purpose is to set locals for presenting the data read in the authentication file
   if (req && req.hasOwnProperty("session") && req.session.hasOwnProperty("userName") &&
     req.session.hasOwnProperty("toolName")) {
     res.locals.userName = req.session.userName;

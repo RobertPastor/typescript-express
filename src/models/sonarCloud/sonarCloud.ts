@@ -48,7 +48,7 @@ export class SonarCloudController {
                 };
                 request(requestOptions, (err: any, res: Response, body: any) => {
                     if (err) {
-                        log(err)
+                        log(err);
                         sonarResponse.err = err;
                         reject(sonarResponse);
 
@@ -57,9 +57,10 @@ export class SonarCloudController {
                         if (res.statusCode === 200) {
                             //log(JSON.stringify(body));
                             // body is a string => convert to an object
-                            body = JSON.parse(body)
+                            body = JSON.parse(body);
                             if (options.return && body.hasOwnProperty(options.return)) {
-                                sonarResponse.responseArray = sonarResponse.responseArray.concat(body[options.return])
+                                // build the final response array
+                                sonarResponse.responseArray = sonarResponse.responseArray.concat(body[options.return]);
                             }
                             sonarResponse.statusCode = res.statusCode;
                             let currentTotal = pageIndex * pageSize;
@@ -74,15 +75,20 @@ export class SonarCloudController {
                                     resolve(sonarResponse);
                                 }
                             } else {
-                                reject("Response Body has no property paging as expected")
+                                sonarResponse.err = "Response Body has no property paging as expected";
+                                reject(sonarResponse);
                             }
                         } else {
-                            reject("Status Code not 2XX as expected = " + String(res.statusCode))
+                            sonarResponse.responseArray = [];
+                            sonarResponse.err = "Status Code not 2XX as expected = " + String(res.statusCode);
+                            log(JSON.stringify(res));
+                            sonarResponse.statusCode = res.statusCode;
+                            reject(sonarResponse);
                         }
                     }
                 });
             }
-            nextPage(pageIndex)
+            nextPage(pageIndex);
         })
 
     }
@@ -93,13 +99,14 @@ export class SonarCloudController {
 
             //request.debug = true;
             let pageIndex: number = 1;
-            let pageSize: number = 2;
+            let pageSize: number = 500;
             this.getPages(options, pageIndex, pageSize)
                 .then(response => {
-                    resolve(response)
+                    resolve(response);
                 })
                 .catch(err => {
-                    reject(err)
+                    log(err);
+                    reject(err);
                 })
         })
     }
